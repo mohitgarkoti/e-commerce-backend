@@ -4,9 +4,9 @@
   "description": "Full Stack Furniture E-Commerce Backend",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node src/helpers/seeder.js",
     "dev": "nodemon src/server.js",
-    "seed": "node src/helpers/seeder.js",
+    "seed": "node src/server.js",
     "seed:force": "node src/helpers/seeder.js --force"
   },
   "dependencies": {
