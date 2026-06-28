@@ -46,6 +46,24 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Seed Database Endpoint (Dummy Route to hit the seeder)
+const seedDatabase = require('./helpers/seeder');
+app.get('/api/seed', async (req, res, next) => {
+  try {
+    const force = req.query.force === 'true';
+    await seedDatabase(force);
+    res.status(200).json({
+      success: true,
+      message: 'Database seeded successfully!',
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Seeding failed: ' + err.message,
+    });
+  }
+});
+
 // Import Route Handlers
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');

@@ -1,7 +1,7 @@
 
 const { encrypt } = require('../utils/crypto');
 
-const SKIP_PATHS = ['/api/health', '/api/orders/webhook'];
+const SKIP_PATHS = ['/api/health', '/api/orders/webhook', '/api/seed'];
 
 module.exports = function encryptResponse(req, res, next) {
   if (SKIP_PATHS.some((p) => req.originalUrl.startsWith(p))) {
